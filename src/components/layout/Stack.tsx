@@ -2,11 +2,11 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 
 const stackItems = [
-  { name: "Claude", icon: "https://cdn.simpleicons.org/anthropic/D97757", isExternal: true, url: "https://claude.ai/" },
-  { name: "Notion", icon: "https://cdn.simpleicons.org/notion/000000", isExternal: true, url: "https://notion.so/" },
-  { name: "Figma", icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSebpk8AZpGklpMqMbMCXQpWGixkL-liIf5zJyvzhaYsg&s=10", isExternal: true, url: "https://figma.com/" },
-  { name: "Trae", icon: "https://upload.wikimedia.org/wikipedia/commons/8/8a/Traelogo.png", isExternal: true, url: "https://www.trae.cn/" },
-  { name: "GitHub", icon: "https://cdn.simpleicons.org/github/181717", isExternal: true, url: "https://github.com/" },
+  { name: "Claude", icon: "https://cdn.simpleicons.org/anthropic/D97757", isExternal: true },
+  { name: "Notion", icon: "https://cdn.simpleicons.org/notion/000000", isExternal: true },
+  { name: "Figma", icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSebpk8AZpGklpMqMbMCXQpWGixkL-liIf5zJyvzhaYsg&s=10", isExternal: true },
+  { name: "Trae", icon: "https://upload.wikimedia.org/wikipedia/commons/8/8a/Traelogo.png", isExternal: true },
+  { name: "GitHub", icon: "https://cdn.simpleicons.org/github/181717", isExternal: true },
 ];
 
 export function Stack() {
@@ -17,8 +17,8 @@ export function Stack() {
       </h3>
       <div className="flex flex-wrap gap-4">
         {stackItems.map((item) => (
-          <a key={item.name} href={item.url} target="_blank" rel="noopener noreferrer" className="relative group">
-            <div className="w-12 h-12 rounded-2xl bg-white border border-slate-200 shadow-sm flex items-center justify-center transition-all duration-200 group-hover:-translate-y-1 group-hover:border-[#93c5fd] cursor-pointer overflow-hidden">
+          <div key={item.name} className="relative group">
+            <div className="w-12 h-12 rounded-2xl bg-white border border-slate-200 shadow-sm flex items-center justify-center transition-all duration-200 group-hover:-translate-y-1 group-hover:border-[#93c5fd] cursor-default overflow-hidden">
               {item.isExternal ? (
                 <Image
                   src={item.icon as string}
@@ -43,7 +43,7 @@ export function Stack() {
               {item.name}
               <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-slate-800 rotate-45"></div>
             </div>
-          </a>
+          </div>
         ))}
       </div>
     </div>
