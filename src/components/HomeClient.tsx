@@ -5,7 +5,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Hero } from "@/components/layout/Hero";
 import { Principles } from "@/components/layout/Principles";
 import { Stack } from "@/components/layout/Stack";
-import { GitHubGraph } from "@/components/layout/GitHubGraph";
 import { CoffeeTalk } from "@/components/layout/CoffeeTalk";
 import { FolderGrid } from "@/components/layout/FolderGrid";
 import { ListView } from "@/components/layout/ListView";
@@ -212,9 +211,6 @@ export function HomeClient({ projects, blogs }: HomeClientProps) {
               </motion.div>
               <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: 0.2 }}>
                 <Stack />
-              </motion.div>
-              <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: 0.3 }}>
-                <GitHubGraph />
               </motion.div>
             </section>
             
