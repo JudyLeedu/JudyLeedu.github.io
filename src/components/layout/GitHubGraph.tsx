@@ -38,9 +38,9 @@ export function GitHubGraph() {
         {/* Snake Animation SVG */}
         {/* PM NOTE: Waiting for GitHub Actions (generate-snake.yml) to run on 'main' branch to generate JudyLeedu's real data. */}
         <picture>
-          <source media="(prefers-color-scheme: dark)" srcSet="https://raw.githubusercontent.com/JudyLeedu/JudyLeedu.github.io/output/github-contribution-grid-snake-dark.svg" />
+          <source media="(prefers-color-scheme: dark)" srcSet="https://raw.githubusercontent.com/JudyLeedu/JudyLeedu.github.io/output/github-snake-dark.svg" />
           <img
-            src="https://raw.githubusercontent.com/JudyLeedu/JudyLeedu.github.io/output/github-contribution-grid-snake.svg"
+            src="https://raw.githubusercontent.com/JudyLeedu/JudyLeedu.github.io/output/github-snake.svg"
             alt="GitHub Contribution Snake Animation"
             className={`w-full h-auto object-cover transition-opacity duration-700 blue-filter ${imageLoaded ? "opacity-100" : "opacity-0"}`}
             onLoad={() => setImageLoaded(true)}
