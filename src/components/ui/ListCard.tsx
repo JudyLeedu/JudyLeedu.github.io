@@ -3,7 +3,7 @@
 interface ListCardProps {
   title: string;
   description: string;
-  icon: string;
+  icon: React.ReactNode;
   iconBgColor: string;
   iconTextColor: string;
   stats: string[];
@@ -30,7 +30,7 @@ export function ListCard({
         </div>
         <div>
           <h3 className="font-medium font-sans text-slate-900 text-[15px] mb-0.5">{title}</h3>
-          <p className="font-sans text-slate-500 text-[13px]">{description}</p>
+          <p className="font-sans text-[#555555] text-[14px]">{description}</p>
           {stats.length > 0 && (
             <div className="flex items-center gap-2 mt-2 text-[11px] text-slate-400 font-mono tracking-tight">
               {stats.map((stat, index) => (

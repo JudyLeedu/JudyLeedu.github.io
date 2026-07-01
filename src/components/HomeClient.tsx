@@ -130,26 +130,28 @@ export function HomeClient({ projects, blogs }: HomeClientProps) {
           </header>
 
           <div className="space-y-4 mb-12">
-            <div className="list-card p-4 flex items-center gap-4">
-              <div className="w-10 h-10 rounded-xl bg-white border border-slate-100 shadow-sm flex items-center justify-center overflow-hidden shrink-0">
+            <ListCard
+              title="Senior Product Manager"
+              description="Bytedance"
+              icon={
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgZNN8XsaxMPrLzEKGSCfWbuduRO3Z60TK_Mbz1dqT_w&s=10" alt="Bytedance" className="w-6 h-6 object-contain" />
-              </div>
-              <div className="flex-1">
-                <h3 className="font-medium font-sans text-slate-900">Senior Product Manager</h3>
-                <p className="text-sm font-sans text-slate-500">Bytedance</p>
-              </div>
-              <div className="text-xs font-mono text-slate-400">2024-present</div>
-            </div>
-            <div className="list-card p-4 flex items-center gap-4">
-              <div className="w-10 h-10 rounded-xl bg-white border border-slate-100 shadow-sm flex items-center justify-center overflow-hidden shrink-0">
+              }
+              iconBgColor="bg-white"
+              iconTextColor="text-slate-900"
+              stats={["2024-present"]}
+              onClick={() => {}}
+            />
+            <ListCard
+              title="Senior Product Manager"
+              description="Tencent"
+              icon={
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgK2IAM7y9RpGgIwy9go3BMpF4DGsHHB5LgWibxbDnkg&s=10" alt="Tencent" className="w-6 h-6 object-contain" />
-              </div>
-              <div className="flex-1">
-                <h3 className="font-medium font-sans text-slate-900">Senior Product Manager</h3>
-                <p className="text-sm font-sans text-slate-500">Tencent</p>
-              </div>
-              <div className="text-xs font-mono text-slate-400">2018-2024</div>
-            </div>
+              }
+              iconBgColor="bg-white"
+              iconTextColor="text-slate-900"
+              stats={["2018-2024"]}
+              onClick={() => {}}
+            />
           </div>
 
           <header className="mb-6">
@@ -159,26 +161,28 @@ export function HomeClient({ projects, blogs }: HomeClientProps) {
           </header>
 
           <div className="space-y-4">
-            <div className="list-card p-4 flex items-center gap-4">
-              <div className="w-10 h-10 rounded-xl bg-white border border-slate-100 shadow-sm flex items-center justify-center overflow-hidden shrink-0">
+            <ListCard
+              title="Design Informatics"
+              description="The University of Edinburgh"
+              icon={
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUz5Nt8XaLv7TPRxyDE8wi6xIXoG6SyEwoS4XBu7SBZQ&s=10" alt="University of Edinburgh" className="w-6 h-6 object-contain" />
-              </div>
-              <div className="flex-1">
-                <h3 className="font-medium font-sans text-slate-900">Design Informatics</h3>
-                <p className="text-sm font-sans text-slate-500">The University of Edinburgh</p>
-              </div>
-              <div className="text-xs font-mono text-slate-400">2016-2018</div>
-            </div>
-            <div className="list-card p-4 flex items-center gap-4">
-              <div className="w-10 h-10 rounded-xl bg-white border border-slate-100 shadow-sm flex items-center justify-center overflow-hidden shrink-0">
+              }
+              iconBgColor="bg-white"
+              iconTextColor="text-slate-900"
+              stats={["2016-2018"]}
+              onClick={() => {}}
+            />
+            <ListCard
+              title="Computer Science"
+              description="South China University of Technology"
+              icon={
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFRdStnIIZSvcCWi1DTS6IO1tXvZ6ixwv50udNqJ3FBw&s=10" alt="SCUT" className="w-6 h-6 object-contain" />
-              </div>
-              <div className="flex-1">
-                <h3 className="font-medium font-sans text-slate-900">Computer Science</h3>
-                <p className="text-sm font-sans text-slate-500">South China University of Technology</p>
-              </div>
-              <div className="text-xs font-mono text-slate-400">2012-2016</div>
-            </div>
+              }
+              iconBgColor="bg-white"
+              iconTextColor="text-slate-900"
+              stats={["2012-2016"]}
+              onClick={() => {}}
+            />
           </div>
         </div>
       );
