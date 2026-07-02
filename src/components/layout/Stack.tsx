@@ -23,8 +23,8 @@ export function Stack() {
                 <Image
                   src={item.icon as string}
                   alt={item.name}
-                  width={item.name === "Trae" ? 32 : 24}
-                  height={item.name === "Trae" ? 32 : 24}
+                  width={item.name === "Trae" ? 32 : item.name === "Figma" ? 18 : 24}
+                  height={item.name === "Trae" ? 32 : item.name === "Figma" ? 18 : 24}
                   className={item.name === "Trae" ? "object-contain rounded-lg" : "object-contain"}
                   unoptimized
                 />
