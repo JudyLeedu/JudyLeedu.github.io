@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+
 interface ListCardProps {
   title: string;
   description: string;
@@ -29,9 +31,9 @@ export function ListCard({
       onClick={onClick}
     >
       <div className="flex items-start gap-4 min-w-0">
-        <div className={`w-12 h-12 rounded-xl flex items-center justify-center text-2xl shrink-0 border border-slate-50 overflow-hidden ${iconBgColor} ${iconTextColor}`}>
+        <div className={`relative w-12 h-12 rounded-xl flex items-center justify-center text-2xl shrink-0 border border-slate-50 overflow-hidden ${iconBgColor} ${iconTextColor}`}>
           {typeof icon === "string" && (icon.startsWith("/") || icon.startsWith("http")) ? (
-            <img src={icon} alt={title} className="w-full h-full object-cover" />
+            <Image src={icon} alt={title} fill className="object-cover" sizes="48px" />
           ) : (
             icon
           )}

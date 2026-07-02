@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 
 interface ProjectGridCardProps {
   title: string;
@@ -29,9 +30,9 @@ export function ProjectGridCard({
       onClick={onClick}
     >
       <div className="flex flex-row items-start gap-5 sm:gap-6 z-10 w-full flex-1">
-        <div className={`rounded-2xl flex items-center justify-center shrink-0 border border-slate-50 shadow-sm overflow-hidden self-start ${iconBgColor} ${iconTextColor} w-16 h-16 sm:w-20 sm:h-20 text-3xl sm:text-4xl`}>
+        <div className={`relative rounded-2xl flex items-center justify-center shrink-0 border border-slate-50 shadow-sm overflow-hidden self-start ${iconBgColor} ${iconTextColor} w-16 h-16 sm:w-20 sm:h-20 text-3xl sm:text-4xl`}>
           {typeof icon === "string" && (icon.startsWith("/") || icon.startsWith("http")) ? (
-            <img src={icon} alt={title} className="w-full h-full object-cover" />
+            <Image src={icon} alt={title} fill className="object-cover" sizes="(max-width: 768px) 64px, 80px" />
           ) : (
             icon
           )}

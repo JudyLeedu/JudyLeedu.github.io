@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Hero } from "@/components/layout/Hero";
 import { Principles } from "@/components/layout/Principles";
@@ -139,7 +140,7 @@ export function HomeClient({ projects, blogs }: HomeClientProps) {
               title="Senior Product Manager"
               description="Bytedance"
               icon={
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgZNN8XsaxMPrLzEKGSCfWbuduRO3Z60TK_Mbz1dqT_w&s=10" alt="Bytedance" className="w-6 h-6 object-contain" />
+                <div className="relative w-6 h-6"><Image src="/icons/bytedance.png" alt="Bytedance" fill className="object-contain" sizes="24px" /></div>
               }
               iconBgColor="bg-white"
               iconTextColor="text-slate-900"
@@ -150,7 +151,7 @@ export function HomeClient({ projects, blogs }: HomeClientProps) {
               title="Senior Product Manager"
               description="Tencent"
               icon={
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgK2IAM7y9RpGgIwy9go3BMpF4DGsHHB5LgWibxbDnkg&s=10" alt="Tencent" className="w-6 h-6 object-contain" />
+                <div className="relative w-6 h-6"><Image src="/icons/tencent.png" alt="Tencent" fill className="object-contain" sizes="24px" /></div>
               }
               iconBgColor="bg-white"
               iconTextColor="text-slate-900"
@@ -170,7 +171,7 @@ export function HomeClient({ projects, blogs }: HomeClientProps) {
               title="Design Informatics"
               description="The University of Edinburgh"
               icon={
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUz5Nt8XaLv7TPRxyDE8wi6xIXoG6SyEwoS4XBu7SBZQ&s=10" alt="University of Edinburgh" className="w-6 h-6 object-contain" />
+                <div className="relative w-6 h-6"><Image src="/icons/edinburgh.png" alt="University of Edinburgh" fill className="object-contain" sizes="24px" /></div>
               }
               iconBgColor="bg-white"
               iconTextColor="text-slate-900"
@@ -181,7 +182,7 @@ export function HomeClient({ projects, blogs }: HomeClientProps) {
               title="Computer Science"
               description="South China University of Technology"
               icon={
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFRdStnIIZSvcCWi1DTS6IO1tXvZ6ixwv50udNqJ3FBw&s=10" alt="SCUT" className="w-6 h-6 object-contain" />
+                <div className="relative w-6 h-6"><Image src="/icons/scut.png" alt="SCUT" fill className="object-contain" sizes="24px" /></div>
               }
               iconBgColor="bg-white"
               iconTextColor="text-slate-900"
