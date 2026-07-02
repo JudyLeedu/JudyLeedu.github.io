@@ -62,7 +62,6 @@ export function HomeClient({ projects, blogs }: HomeClientProps) {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             {projects.map((project, index) => {
               const colors = getIconColorClasses(project.frontmatter.color);
-              const isCore = index === 0; // 第一个项目作为核心项目，占两列
               return (
                 <ProjectGridCard
                   key={project.slug}
@@ -73,7 +72,6 @@ export function HomeClient({ projects, blogs }: HomeClientProps) {
                   iconTextColor={colors.text}
                   date={project.frontmatter.date}
                   tags={project.frontmatter.tags}
-                  isCore={isCore}
                   onClick={() => setSelectedItem({ 
                     title: project.frontmatter.title, 
                     category: "Project", 
