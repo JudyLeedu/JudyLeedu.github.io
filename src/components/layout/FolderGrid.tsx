@@ -4,9 +4,11 @@ import { Folder } from "@/components/ui/Folder";
 
 interface FolderGridProps {
   onOpenFolder: (folderName: string) => void;
+  projectsCount?: number;
+  blogsCount?: number;
 }
 
-export function FolderGrid({ onOpenFolder }: FolderGridProps) {
+export function FolderGrid({ onOpenFolder, projectsCount = 0, blogsCount = 0 }: FolderGridProps) {
   return (
     <div className="mt-16">
       <h3 className="module-title text-[11px] font-normal text-[#6e6e6e] tracking-[0.13em] mb-4 uppercase">
@@ -16,7 +18,7 @@ export function FolderGrid({ onOpenFolder }: FolderGridProps) {
         
         <Folder
           title="Projects"
-          subtitle="8 builds"
+          subtitle={`${projectsCount} builds`}
           tabColor="bg-blue-500"
           backColor="bg-blue-600"
           frontColor="bg-blue-500"
@@ -50,7 +52,7 @@ export function FolderGrid({ onOpenFolder }: FolderGridProps) {
 
         <Folder
           title="Blogs"
-          subtitle="15 essays"
+          subtitle={`${blogsCount} blogs`}
           tabColor="bg-rose-400"
           backColor="bg-rose-500"
           frontColor="bg-rose-400"

@@ -220,7 +220,11 @@ export function HomeClient({ projects, blogs }: HomeClientProps) {
             </section>
             
             <motion.div className="mb-16" initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: 0.4 }}>
-              <FolderGrid onOpenFolder={(folder) => setView(folder as ViewState)} />
+              <FolderGrid 
+                onOpenFolder={(folder) => setView(folder as ViewState)} 
+                projectsCount={projects.length}
+                blogsCount={blogs.length}
+              />
             </motion.div>
 
             <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: 0.5 }}>
