@@ -9,6 +9,7 @@ import { CoffeeTalk } from "@/components/layout/CoffeeTalk";
 import { FolderGrid } from "@/components/layout/FolderGrid";
 import { ListView } from "@/components/layout/ListView";
 import { ListCard } from "@/components/ui/ListCard";
+import { ProjectGridCard } from "@/components/ui/ProjectGridCard";
 import { Modal } from "@/components/ui/Modal";
 import { Footer } from "@/components/layout/Footer";
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
@@ -57,25 +58,29 @@ export function HomeClient({ projects, blogs }: HomeClientProps) {
           backText="All projects"
           onBack={() => setView("home")}
         >
-          {projects.map((project) => {
-            const colors = getIconColorClasses(project.frontmatter.color);
-            return (
-              <ListCard
-                key={project.slug}
-                title={project.frontmatter.title}
-                description={project.frontmatter.description}
-                icon={project.frontmatter.icon}
-                iconBgColor={colors.bg}
-                iconTextColor={colors.text}
-                stats={[project.frontmatter.date]}
-                onClick={() => setSelectedItem({ 
-                  title: project.frontmatter.title, 
-                  category: "Project", 
-                  mdxSource: project.mdxSource 
-                })}
-              />
-            );
-          })}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+            {projects.map((project, index) => {
+              const colors = getIconColorClasses(project.frontmatter.color);
+              const isCore = index === 0; // 第一个项目作为核心项目，占两列
+              return (
+                <ProjectGridCard
+                  key={project.slug}
+                  title={project.frontmatter.title}
+                  description={project.frontmatter.description}
+                  icon={project.frontmatter.icon}
+                  iconBgColor={colors.bg}
+                  iconTextColor={colors.text}
+                  stats={[project.frontmatter.date]}
+                  isCore={isCore}
+                  onClick={() => setSelectedItem({ 
+                    title: project.frontmatter.title, 
+                    category: "Project", 
+                    mdxSource: project.mdxSource 
+                  })}
+                />
+              );
+            })}
+          </div>
         </ListView>
       );
     }
@@ -116,7 +121,7 @@ export function HomeClient({ projects, blogs }: HomeClientProps) {
         <div className="w-full pb-20 animate-in fade-in slide-in-from-bottom-4 duration-300">
           <button 
             onClick={() => setView("home")} 
-            className="flex items-center gap-2 text-[13px] font-bold text-slate-400 hover:text-slate-700 transition-colors mb-8 group"
+            className="inline-flex items-center gap-2 text-[13px] font-medium text-slate-600 bg-white border border-slate-200 rounded-full px-4 py-2 hover:bg-slate-900 hover:text-white hover:border-slate-900 transition-all duration-300 group shadow-sm mb-8"
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 group-hover:-translate-x-1 transition-transform"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
             About me

@@ -2,11 +2,11 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 
 const stackItems = [
-  { name: "Claude", icon: "https://cdn.simpleicons.org/anthropic/D97757", isExternal: true },
-  { name: "Notion", icon: "https://cdn.simpleicons.org/notion/000000", isExternal: true },
-  { name: "Figma", icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSebpk8AZpGklpMqMbMCXQpWGixkL-liIf5zJyvzhaYsg&s=10", isExternal: true },
-  { name: "Trae", icon: "https://upload.wikimedia.org/wikipedia/commons/8/8a/Traelogo.png", isExternal: true },
-  { name: "GitHub", icon: "https://cdn.simpleicons.org/github/181717", isExternal: true },
+  { name: "Claude", icon: "/icons/claude.svg", isExternal: true },
+  { name: "Notion", icon: "/icons/notion.svg", isExternal: true },
+  { name: "Figma", icon: "/figma-logo.png", isExternal: true },
+  { name: "Trae", icon: "/trae-logo.png", isExternal: true },
+  { name: "GitHub", icon: "/icons/github.svg", isExternal: true },
 ];
 
 export function Stack() {
@@ -26,6 +26,7 @@ export function Stack() {
                   width={item.name === "Trae" ? 32 : 24}
                   height={item.name === "Trae" ? 32 : 24}
                   className={item.name === "Trae" ? "object-contain rounded-lg" : "object-contain"}
+                  unoptimized
                 />
               ) : (
                 <div className="w-10 h-10 rounded-xl bg-[#1A1A1A] flex items-center justify-center overflow-hidden">

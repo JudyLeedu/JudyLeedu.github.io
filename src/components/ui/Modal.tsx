@@ -62,9 +62,9 @@ export function Modal({ isOpen, onClose, title, category, children }: ModalProps
           </div>
           <button
             onClick={onClose}
-            className="p-2 -mr-2 -mt-2 rounded-full hover:bg-slate-100 transition-colors text-slate-400 hover:text-slate-600"
+            className="p-2 -mr-2 -mt-2 rounded-full bg-white border border-transparent hover:border-slate-200 hover:bg-slate-50 transition-all duration-300 text-slate-400 hover:text-slate-900 shadow-none hover:shadow-sm group"
           >
-            <X className="w-5 h-5" />
+            <X className="w-5 h-5 group-hover:rotate-90 transition-transform duration-300" />
           </button>
         </div>
 

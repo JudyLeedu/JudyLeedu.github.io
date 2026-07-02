@@ -20,7 +20,7 @@ export function ListView({ title, subtitle, backText = "All work", onBack, child
     <div className="w-full pb-20 animate-in fade-in slide-in-from-bottom-4 duration-300">
       <button 
         onClick={onBack} 
-        className="flex items-center gap-2 text-[13px] font-bold text-slate-400 hover:text-slate-700 transition-colors mb-8 group"
+        className="inline-flex items-center gap-2 text-[13px] font-medium text-slate-600 bg-white border border-slate-200 rounded-full px-4 py-2 hover:bg-slate-900 hover:text-white hover:border-slate-900 transition-all duration-300 group shadow-sm mb-8"
       >
         <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
         {backText}
