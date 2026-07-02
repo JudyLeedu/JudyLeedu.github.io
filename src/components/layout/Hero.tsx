@@ -20,11 +20,11 @@ export function Hero() {
 
       <div className="pl-2">
         <h2 className="text-[26px] font-bold font-heading text-slate-900 tracking-tight leading-none mb-4">
-          8-Year Platform PM & AI Builder
+          <span className="text-klein">8-Year</span> Platform PM & AI Builder
         </h2>
         <p className="font-sans text-[15px] font-normal leading-[1.8] text-[#777777] max-w-lg">
           Turning ideas into code, and code into products.<br />
-          I think, I build, I ship.
+          <span className="font-medium text-klein">I think, I build, I ship.</span>
         </p>
       </div>
     </header>
