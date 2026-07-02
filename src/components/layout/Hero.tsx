@@ -18,8 +18,8 @@ export function Hero() {
         </h1>
       </div>
 
-      <div className="pl-0">
-        <h2 className="text-[26px] font-bold font-heading text-slate-900 tracking-tight leading-none mb-4">
+      <div>
+        <h2 className="text-[26px] font-bold font-heading text-slate-900 tracking-tight leading-none mb-4 -ml-[1px]">
           <span className="text-klein">8-Year</span> Platform PM & AI Builder
         </h2>
         <p className="font-sans text-[15px] font-normal leading-[1.8] text-[#777777] max-w-lg">
