@@ -24,8 +24,8 @@ export function ListCard({
       className="bg-white border border-slate-200 rounded-xl p-4 flex items-center justify-between cursor-pointer group transition-colors duration-200 shadow-[0_1px_3px_rgba(0,0,0,0.02)] hover:border-[#93c5fd]"
       onClick={onClick}
     >
-      <div className="flex items-start gap-4">
-        <div className={`w-10 h-10 rounded-lg flex items-center justify-center text-lg shrink-0 border border-slate-50 ${iconBgColor} ${iconTextColor}`}>
+      <div className="flex items-start gap-4 sm:gap-6">
+        <div className={`w-16 h-16 sm:w-20 sm:h-20 rounded-2xl flex items-center justify-center text-3xl sm:text-4xl shrink-0 border border-slate-50 ${iconBgColor} ${iconTextColor}`}>
           {icon}
         </div>
         <div>
