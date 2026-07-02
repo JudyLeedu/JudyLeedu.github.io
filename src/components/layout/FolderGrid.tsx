@@ -11,7 +11,7 @@ interface FolderGridProps {
 export function FolderGrid({ onOpenFolder, projectsCount = 0, blogsCount = 0 }: FolderGridProps) {
   return (
     <div className="mt-16">
-      <h2 className="module-title text-[11px] font-normal text-[#6e6e6e] tracking-[0.13em] mb-4 uppercase">
+      <h2 className="module-title text-[15px] font-normal text-[#6e6e6e] tracking-[0.13em] mb-4 uppercase">
         Just show it
       </h2>
       <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-5 gap-y-8">

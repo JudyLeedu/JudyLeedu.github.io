@@ -31,7 +31,7 @@ export function Principles() {
 
   return (
     <div>
-      <h2 className="module-title text-[11px] font-normal text-[#6e6e6e] tracking-[0.13em] mb-4 uppercase">
+      <h2 className="module-title text-[15px] font-normal text-[#6e6e6e] tracking-[0.13em] mb-4 uppercase">
         Principles
       </h2>
       <div className="flex flex-col gap-3 font-sans">
