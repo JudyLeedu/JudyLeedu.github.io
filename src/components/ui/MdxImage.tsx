@@ -16,13 +16,13 @@ export function MdxImage({ src, alt }: MdxImageProps) {
   return (
     <>
       <div 
-        className="my-8 rounded-xl overflow-hidden border border-slate-100 bg-slate-50 cursor-zoom-in relative group"
+        className="my-8 rounded-xl border border-slate-100 bg-slate-50 cursor-zoom-in relative group flex justify-center items-center overflow-hidden"
         onClick={() => setIsOpen(true)}
       >
         <img 
           src={src} 
           alt={alt} 
-          className="w-full h-auto object-contain m-0 transition-transform duration-500 group-hover:scale-[1.02]" 
+          className="w-full h-auto object-cover m-0 transition-transform duration-500 group-hover:scale-[1.02]" 
           loading="lazy"
         />
         <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-300 flex items-center justify-center pointer-events-none">
