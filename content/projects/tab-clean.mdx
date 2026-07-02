@@ -3,54 +3,43 @@ title: "Tab Clean"
 description: "A Chrome Side Panel extension that turns hundreds of open tabs into grouped, actionable decisions: duplicates, keep, closeable, and to-do."
 date: "2024-06-12"
 icon: "🧹"
-iconBg: "bg-blue-50/80 dark:bg-blue-900/20"
-iconColor: "text-blue-500"
 tags: ["Chrome Extension", "AI-Driven Workflow", "Cognitive Flow Optimization"]
 isCore: true
 ---
 
 ## Project Overview
-
 **Tab Clean** is more than just a "tab closer." It is a workspace management system designed for power users who treat browser tabs as temporary tasks, research context, and "unfinished intentions."
 
 **Core Value:** Transforming high-entropy tab accumulation into a structured task flow.
 
-## 01 Problem
+<img src="/tab-clean-board.png" alt="Strategy Board" className="my-8 rounded-xl overflow-hidden border border-slate-200 shadow-sm dark:border-slate-800" />
 
+## 01 Problem
 Knowledge workers often leave dozens or hundreds of tabs open not because they are "lazy," but because they are **afraid to close them**. Every tab represents a potential resource, a reminder of a task, or a thread of a research project.
 
 ## 02 Insight: Tabs are Unfinished Intentions
-
 My core insight during research was that **Tabs are ephemeral states of work.** Most tabs are opened with the intention of being processed "later." When "later" doesn't happen, they become mental debt.
 
-## 03 Strategy: A Decision System, Not Just a Cleaner
-
+## 03. Strategy: A Decision System, Not Just a Cleaner
 Instead of overwhelming the user with "Smart AI Summaries" or "Complex Folder Systems," Tab Clean V1 focuses on **Decision Support**. It answers one question: **"What should I do with this tab right now?"**
 
-<div className="my-8 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm">
-  <img src="/tab-clean-board.png" alt="Tab Clean Strategy Board" className="w-full h-auto" />
-</div>
+<img src="/tab-clean-ui.png" alt="UI Design" className="my-8 rounded-xl overflow-hidden border border-slate-200 shadow-sm dark:border-slate-800" />
 
-## 04 Experience Design: Why Side Panel?
-
+## 04. Experience Design: Why Side Panel?
 I chose the **Chrome Side Panel** over a traditional Popup for three strategic reasons:
-
 - **Side-by-Side Context:** Users can view their current page while managing their workspace.
 - **Space for Complexity:** Organizing 100+ items requires the vertical space and structure that a small popup cannot provide.
 - **Workflow Integration:** It feels like a "Native Tool" rather than an "Add-on," encouraging daily habit formation.
 
-## 05 PRD Notes & Original Thinking (中文)
-
+## 05. PRD Notes & Original Thinking (中文)
 **核心洞察：Tab 即待办**
-
 用户习惯把浏览器 Tab 当成“待办列表”，但 Tab 缺乏状态管理。Tab Clean 的核心价值不在于“关掉”，而在于“归类状态”。
 
 - **状态互斥原则：** 重复项专区优先级最高，同一时刻一个 Tab 只出现在一个区域，确保用户决策路径不交叉。
 - **一键瘦身逻辑：** 重复 Tab 默认保留“最近访问”的一个，其余批量清理，这种“最近最少使用（LRU）”的思想降低了用户的选择焦虑。
 - **情感化加载：** 设计了陪伴式加载动画，缓解用户在面对 100+ 混乱 Tab 时的挫败感，变“清理垃圾”为“整理工作台”。
 
-## 06 Next Steps
-
+## 06. Next Steps
 - **Workspace Contexts:** Grouping tabs by project/topic using lightweight ML or improved heuristics.
 - **Memory Impact Visualization:** Showing the user exactly how much RAM they've reclaimed.
 - **Behavioral Analytics:** Tracking the "Tab Closure Conversion Rate" to refine my heuristic rules.
