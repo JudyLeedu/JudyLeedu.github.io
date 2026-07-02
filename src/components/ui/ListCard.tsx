@@ -8,7 +8,8 @@ interface ListCardProps {
   iconTextColor: string;
   date?: string;
   tags?: string[];
-  onClick: () => void;
+  showArrow?: boolean;
+  onClick?: () => void;
 }
 
 export function ListCard({
@@ -19,11 +20,12 @@ export function ListCard({
   iconTextColor,
   date,
   tags = [],
+  showArrow = true,
   onClick,
 }: ListCardProps) {
   return (
     <div 
-      className="bg-white border border-slate-200 rounded-xl p-4 flex items-center justify-between cursor-pointer group transition-all duration-300 shadow-[0_1px_3px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_20px_rgba(0,0,0,0.06)] hover:-translate-y-1 hover:border-blue-500/30"
+      className={`bg-white border border-slate-200 rounded-xl p-4 flex items-center justify-between group transition-all duration-300 shadow-[0_1px_3px_rgba(0,0,0,0.02)] ${onClick ? 'cursor-pointer hover:shadow-[0_8px_20px_rgba(0,0,0,0.06)] hover:-translate-y-1 hover:border-blue-500/30' : ''}`}
       onClick={onClick}
     >
       <div className="flex items-start gap-4 min-w-0">
@@ -55,9 +57,11 @@ export function ListCard({
           )}
         </div>
       </div>
-      <span className="text-slate-300 group-hover:text-blue-500 group-hover:translate-x-1 transition-all ml-4 text-lg shrink-0">
-        →
-      </span>
+      {showArrow && (
+        <span className="text-slate-300 group-hover:text-blue-500 group-hover:translate-x-1 transition-all ml-4 text-lg shrink-0">
+          →
+        </span>
+      )}
     </div>
   );
 }

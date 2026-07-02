@@ -144,7 +144,7 @@ export function HomeClient({ projects, blogs }: HomeClientProps) {
               iconBgColor="bg-white"
               iconTextColor="text-slate-900"
               date="2024-present"
-              onClick={() => {}}
+              showArrow={false}
             />
             <ListCard
               title="Senior Product Manager"
@@ -155,7 +155,7 @@ export function HomeClient({ projects, blogs }: HomeClientProps) {
               iconBgColor="bg-white"
               iconTextColor="text-slate-900"
               date="2018-2024"
-              onClick={() => {}}
+              showArrow={false}
             />
           </div>
 
@@ -175,7 +175,7 @@ export function HomeClient({ projects, blogs }: HomeClientProps) {
               iconBgColor="bg-white"
               iconTextColor="text-slate-900"
               date="2016-2018"
-              onClick={() => {}}
+              showArrow={false}
             />
             <ListCard
               title="Computer Science"
@@ -186,7 +186,7 @@ export function HomeClient({ projects, blogs }: HomeClientProps) {
               iconBgColor="bg-white"
               iconTextColor="text-slate-900"
               date="2012-2016"
-              onClick={() => {}}
+              showArrow={false}
             />
           </div>
         </div>
