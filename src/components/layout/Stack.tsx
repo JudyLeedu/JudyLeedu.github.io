@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 const stackItems = [
   { name: "Claude", icon: "/icons/claude.svg", isExternal: true },
   { name: "Notion", icon: "/icons/notion.svg", isExternal: true },
-  { name: "Figma", icon: "/figma-logo.png", isExternal: true },
+  { name: "Figma", icon: "/icons/figma.svg", isExternal: true },
   { name: "Trae", icon: "/trae-logo.png", isExternal: true },
   { name: "GitHub", icon: "/icons/github.svg", isExternal: true },
 ];
