@@ -12,6 +12,7 @@ interface ListCardProps {
   tags?: string[];
   showArrow?: boolean;
   onClick?: () => void;
+  priority?: boolean;
 }
 
 export function ListCard({
@@ -24,6 +25,7 @@ export function ListCard({
   tags = [],
   showArrow = true,
   onClick,
+  priority = false,
 }: ListCardProps) {
   return (
     <div 
@@ -33,7 +35,7 @@ export function ListCard({
       <div className="flex items-start gap-4 min-w-0">
         <div className={`relative w-12 h-12 rounded-xl flex items-center justify-center text-2xl shrink-0 border border-slate-50 overflow-hidden ${iconBgColor} ${iconTextColor}`}>
           {typeof icon === "string" && (icon.startsWith("/") || icon.startsWith("http")) ? (
-            <Image src={icon} alt={title} fill className="object-cover" sizes="48px" />
+            <Image src={icon} alt={title} fill priority={priority} className="object-cover" sizes="48px" />
           ) : (
             icon
           )}

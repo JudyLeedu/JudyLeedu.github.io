@@ -78,6 +78,7 @@ export function HomeClient({ projects, blogs }: HomeClientProps) {
                     category: "Project", 
                     mdxSource: project.mdxSource 
                   })}
+                  priority={index < 2}
                 />
               );
             })}
@@ -140,7 +141,7 @@ export function HomeClient({ projects, blogs }: HomeClientProps) {
               title="Senior Product Manager"
               description="Bytedance"
               icon={
-                <div className="relative w-6 h-6"><Image src="/icons/bytedance.png" alt="Bytedance" fill className="object-contain" sizes="24px" /></div>
+                <div className="relative w-6 h-6"><Image src="/icons/bytedance.png" alt="Bytedance" fill unoptimized className="object-contain" sizes="24px" /></div>
               }
               iconBgColor="bg-white"
               iconTextColor="text-slate-900"
@@ -151,7 +152,7 @@ export function HomeClient({ projects, blogs }: HomeClientProps) {
               title="Senior Product Manager"
               description="Tencent"
               icon={
-                <div className="relative w-6 h-6"><Image src="/icons/tencent.png" alt="Tencent" fill className="object-contain" sizes="24px" /></div>
+                <div className="relative w-6 h-6"><Image src="/icons/tencent.png" alt="Tencent" fill unoptimized className="object-contain" sizes="24px" /></div>
               }
               iconBgColor="bg-white"
               iconTextColor="text-slate-900"
@@ -171,7 +172,7 @@ export function HomeClient({ projects, blogs }: HomeClientProps) {
               title="Design Informatics"
               description="The University of Edinburgh"
               icon={
-                <div className="relative w-6 h-6"><Image src="/icons/edinburgh.png" alt="University of Edinburgh" fill className="object-contain" sizes="24px" /></div>
+                <div className="relative w-6 h-6"><Image src="/icons/edinburgh.png" alt="University of Edinburgh" fill unoptimized className="object-contain" sizes="24px" /></div>
               }
               iconBgColor="bg-white"
               iconTextColor="text-slate-900"
@@ -182,7 +183,7 @@ export function HomeClient({ projects, blogs }: HomeClientProps) {
               title="Computer Science"
               description="South China University of Technology"
               icon={
-                <div className="relative w-6 h-6"><Image src="/icons/scut.png" alt="SCUT" fill className="object-contain" sizes="24px" /></div>
+                <div className="relative w-6 h-6"><Image src="/icons/scut.png" alt="SCUT" fill unoptimized className="object-contain" sizes="24px" /></div>
               }
               iconBgColor="bg-white"
               iconTextColor="text-slate-900"
