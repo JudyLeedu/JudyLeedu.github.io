@@ -30,7 +30,7 @@ export function ListView({ title, subtitle, backText = "All work", onBack, child
         <h1 className="text-[28px] font-bold font-heading text-slate-900 mb-2 tracking-tight">
           {title}
         </h1>
-        <p className="text-slate-500 text-[14px] font-medium">
+        <p className="font-sans text-[14px] font-normal text-[#555555]">
           {subtitle}
         </p>
       </header>
