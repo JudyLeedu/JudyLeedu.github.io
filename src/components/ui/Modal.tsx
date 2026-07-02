@@ -77,10 +77,10 @@ export function Modal({ isOpen, onClose, title, category, children }: ModalProps
           {/* 这里预埋了用于渲染 MDX 的 Typography (Prose) 规则 */}
           <div className="prose prose-slate prose-sm sm:prose-base max-w-none 
             prose-headings:font-heading prose-headings:tracking-tight prose-headings:text-slate-900
-            prose-h1:text-[22px] prose-h1:mt-8 prose-h1:mb-4
-            prose-h2:text-[18px] prose-h2:mt-6 prose-h2:mb-3
-            prose-h3:text-[15px] prose-h3:mt-5 prose-h3:mb-2
-            prose-p:text-[14px] prose-p:leading-[1.6] prose-p:text-[#555555]
+            prose-h1:text-[24px] prose-h1:font-bold prose-h1:mt-8 prose-h1:mb-4
+            prose-h2:text-[20px] prose-h2:font-bold prose-h2:mt-8 prose-h2:mb-4
+            prose-h3:text-[16px] prose-h3:font-bold prose-h3:mt-6 prose-h3:mb-2
+            prose-p:text-[14px] prose-p:leading-[1.7] prose-p:text-[#555555]
             prose-a:text-blue-600 prose-a:no-underline hover:prose-a:underline
             prose-li:text-[14px] prose-li:text-[#555555]
             prose-blockquote:border-l-4 prose-blockquote:border-slate-200 prose-blockquote:pl-4 prose-blockquote:italic prose-blockquote:text-slate-500">
