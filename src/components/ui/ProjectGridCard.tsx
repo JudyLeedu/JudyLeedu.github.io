@@ -35,8 +35,8 @@ export function ProjectGridCard({
       {/* 边框微光效果 */}
       <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/0 to-white/0 group-hover:via-blue-50/40 group-hover:to-blue-100/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl pointer-events-none"></div>
 
-      <div className={`flex ${isCore ? "flex-row items-center gap-6" : "flex-col gap-4"} flex-1 z-10`}>
-        <div className={`rounded-xl flex items-center justify-center text-xl shrink-0 border border-slate-50 shadow-sm ${iconBgColor} ${iconTextColor} ${isCore ? "w-14 h-14" : "w-12 h-12"}`}>
+      <div className={`flex ${isCore ? "flex-row items-start gap-4 sm:gap-5" : "flex-col gap-4"} flex-1 z-10`}>
+        <div className={`rounded-2xl flex items-center justify-center shrink-0 border border-slate-50 shadow-sm ${iconBgColor} ${iconTextColor} ${isCore ? "w-16 h-16 sm:w-20 sm:h-20 text-3xl sm:text-4xl" : "w-12 h-12 text-xl"}`}>
           {icon}
         </div>
         
