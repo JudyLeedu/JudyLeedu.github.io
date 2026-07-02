@@ -39,8 +39,8 @@ export function ProjectGridCard({
         
         <div className="flex flex-col flex-1 min-w-0 justify-between h-full">
           <div className="mb-4 sm:mb-6">
-            <h3 className="font-semibold font-sans text-slate-900 mb-1.5 truncate text-lg">{title}</h3>
-            <p className="font-sans text-[#555555] leading-relaxed line-clamp-2 sm:line-clamp-none text-[15px]">{description}</p>
+            <h3 className="font-medium font-sans text-slate-900 mb-1.5 truncate text-[15px]">{title}</h3>
+            <p className="font-sans text-[#555555] text-[14px] line-clamp-2 sm:line-clamp-none">{description}</p>
             
             {tags.length > 0 && (
               <div className="flex flex-wrap items-center gap-2 mt-3 sm:mt-4">
