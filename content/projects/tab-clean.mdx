@@ -1,39 +1,58 @@
 ---
 title: "Tab Clean"
-description: "一个解决 Chrome 浏览器 tab 过载的插件。没有做智能分类，没有做 AI 总结，只是帮你安静地、不打扰地把 300 个 tab 收起来。"
-date: "2026-06-13"
+description: "A Chrome Side Panel extension that turns hundreds of open tabs into grouped, actionable decisions: duplicates, keep, closeable, and to-do."
+date: "2024-06-12"
 icon: "🧹"
-color: "blue"
+iconBg: "bg-blue-50/80 dark:bg-blue-900/20"
+iconColor: "text-blue-500"
+tags: ["Chrome Extension", "AI-Driven Workflow", "Cognitive Flow Optimization"]
+isCore: true
 ---
 
-<div className="font-sans text-[14px] font-normal leading-[1.6] text-[#555555]">
+### Project Overview
 
-### The Problem: Tab 过载的焦虑
+**Tab Clean** is more than just a "tab closer." It is a workspace management system designed for power users who treat browser tabs as temporary tasks, research context, and "unfinished intentions."
 
-现代人的浏览器里永远开着几十甚至上百个 Tab（标签页）。它们占用着内存，更占用着你的心智带宽。
+**Core Value:** Transforming high-entropy tab accumulation into a structured task flow.
 
-市面上有无数的 Tab 管理工具，它们试图帮你把 Tab 分门别类，或者用 AI 总结每个网页的内容。但这真的是我们需要的吗？当你被 300 个未读页面压得喘不过气时，你最不需要的，就是一个试图教你如何“更有条理”的系统。
+---
 
-你需要的只是一块干净的抹布，把桌子一把抹干净。
+### 01 Problem
 
-这就是 Tab Clean 的起点：**一个解决 Chrome 浏览器 tab 过载的极简插件。** 没有做智能分类，没有做 AI 总结，只是帮你安静的、不打扰的把 300 个 tab 收起来。
+Knowledge workers often leave dozens or hundreds of tabs open not because they are "lazy," but because they are **afraid to close them**. Every tab represents a potential resource, a reminder of a task, or a thread of a research project.
 
-### Key Decisions: 克制即正义
+### 02 Insight: Tabs are Unfinished Intentions
 
-在这个项目中，我做出了两个“极其克制”甚至有点反直觉的产品决策：
+My core insight during research was that **Tabs are ephemeral states of work.** Most tabs are opened with the intention of being processed "later." When "later" doesn't happen, they become mental debt.
 
-#### 1. 砍掉了所有 AI 功能
-整个插件没有任何大模型调用，没有总结，没有分类，没有智能任何东西。这在 2025 年是一个极度“政治不正确”的决定，所有看过原型的人都跟我说：“现在做工具不加 AI 你好意思上线？”
+### 03 Strategy: A Decision System, Not Just a Cleaner
 
-但作为 PM，我必须诚实地面对用户场景：用户积攒几百个 Tab 的核心心理是“舍不得关，万一以后要用呢”。加上 AI 分类不仅会让产品变得沉重、变慢，更会带来认知负担（你还得去理解 AI 的分类逻辑）。Tab Clean 唯一要做的，就是一键把它们打包存进“冷宫”，给你一个清爽的当前工作区。
+Instead of overwhelming the user with "Smart AI Summaries" or "Complex Folder Systems," Tab Clean V1 focuses on **Decision Support**. It answers one question: **"What should I do with this tab right now?"**
 
-#### 2. 零打扰设计 (Zero Onboarding)
-没有任何弹窗，没有任何通知，没有任何 onboarding。安装之后，插件图标亮一下，就消失了。
-
-你不点它，它永远不会来找你。没有评分弹窗，没有更新通知，没有功能引导，甚至连欢迎页都没有。我希望它就像你办公桌抽屉里的一个曲别针盒子——它在那里，随时可用，但永远不会主动刷存在感。
-
-### The Impact
-
-有时候，不做什么（Non-Goals）比做什么（Goals）更重要。Tab Clean 证明了在被过度设计（Over-engineered）和 AI 焦虑裹挟的工具市场里，纯粹的、只解决一个核心痛点的单一功能工具，依然有其独特的生命力和受众。
-
+<div className="my-8 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm">
+  <img src="/tab-clean-board.png" alt="Tab Clean Strategy Board" className="w-full h-auto" />
 </div>
+
+### 04 Experience Design: Why Side Panel?
+
+I chose the **Chrome Side Panel** over a traditional Popup for three strategic reasons:
+
+- **Side-by-Side Context:** Users can view their current page while managing their workspace.
+- **Space for Complexity:** Organizing 100+ items requires the vertical space and structure that a small popup cannot provide.
+- **Workflow Integration:** It feels like a "Native Tool" rather than an "Add-on," encouraging daily habit formation.
+
+### 05 PRD Notes & Original Thinking (中文)
+
+**核心洞察：Tab 即待办**
+
+用户习惯把浏览器 Tab 当成“待办列表”，但 Tab 缺乏状态管理。Tab Clean 的核心价值不在于“关掉”，而在于“归类状态”。
+
+- **状态互斥原则：** 重复项专区优先级最高，同一时刻一个 Tab 只出现在一个区域，确保用户决策路径不交叉。
+- **一键瘦身逻辑：** 重复 Tab 默认保留“最近访问”的一个，其余批量清理，这种“最近最少使用（LRU）”的思想降低了用户的选择焦虑。
+- **情感化加载：** 设计了陪伴式加载动画，缓解用户在面对 100+ 混乱 Tab 时的挫败感，变“清理垃圾”为“整理工作台”。
+
+### 06 Next Steps
+
+- **Workspace Contexts:** Grouping tabs by project/topic using lightweight ML or improved heuristics.
+- **Memory Impact Visualization:** Showing the user exactly how much RAM they've reclaimed.
+- **Behavioral Analytics:** Tracking the "Tab Closure Conversion Rate" to refine my heuristic rules.
