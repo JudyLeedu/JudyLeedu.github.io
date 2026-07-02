@@ -29,9 +29,14 @@ export function Folder({
         </div>
         <div className={`mac-folder-front ${frontColor}`}></div>
       </div>
-      <div className="flex flex-col gap-0.5 mt-2">
-        <h2 className="font-sans text-[15px] font-semibold text-slate-900">{title}</h2>
-        <p className="text-[12px] text-slate-500 font-medium">{subtitle}</p>
+      {/* 文件夹下方文字说明区域 */}
+      <div className="mt-4 flex flex-col gap-1 transition-transform duration-300 group-hover:translate-x-1">
+        <span className="font-sans text-[15px] font-medium text-slate-900">
+          {title}
+        </span>
+        <span className="font-sans text-[14px] font-normal text-[#555555]">
+          {subtitle}
+        </span>
       </div>
     </div>
   );
