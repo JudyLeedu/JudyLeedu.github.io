@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { X } from "lucide-react";
+import { StickyTOC } from "./StickyTOC";
 
 interface ModalProps {
   isOpen: boolean;
@@ -50,6 +51,8 @@ export function Modal({ isOpen, onClose, title, category, children }: ModalProps
           isAnimating ? "translate-x-0" : "translate-x-full"
         }`}
       >
+        <StickyTOC contentSelector=".prose" />
+
         {/* Header区 */}
         <div className="flex-none px-8 sm:px-12 pt-10 pb-6 border-b border-slate-100 bg-white sticky top-0 z-20 flex justify-between items-start">
           <div className="flex items-center gap-3">

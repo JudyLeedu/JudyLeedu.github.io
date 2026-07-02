@@ -14,6 +14,11 @@ import { ProjectGridCard } from "@/components/ui/ProjectGridCard";
 import { Modal } from "@/components/ui/Modal";
 import { Footer } from "@/components/layout/Footer";
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
+import { MdxImage } from "@/components/ui/MdxImage";
+
+const mdxComponents = {
+  img: (props: any) => <MdxImage {...props} />,
+};
 
 export type MDXPostData = {
   slug: string;
@@ -257,7 +262,7 @@ export function HomeClient({ projects, blogs }: HomeClientProps) {
         category={selectedItem?.category || ""}
       >
         {selectedItem?.mdxSource ? (
-          <MDXRemote {...selectedItem.mdxSource} />
+          <MDXRemote {...selectedItem.mdxSource} components={mdxComponents} />
         ) : (
           <div className="text-slate-500 italic text-sm py-20 text-center border border-dashed border-slate-200 rounded-xl bg-slate-50/50">
             [ No content available ]
