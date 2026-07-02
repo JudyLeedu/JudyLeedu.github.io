@@ -19,13 +19,12 @@ export function Hero() {
       </div>
 
       <div className="pl-2">
+        <h2 className="text-[26px] font-bold font-heading text-slate-900 tracking-tight leading-none mb-4">
+          8-Year Platform PM & AI Builder
+        </h2>
         <p className="font-sans text-[15px] font-normal leading-[1.8] text-[#777777] max-w-lg">
-          <span className="text-lg font-bold text-slate-900 block mb-1">Senior Product Manager</span>
-          Currently building products at Bytedance, previously at Tencent.<br />
-          Bridging the gap between business, design, and engineering.<br />
-          <span className="font-medium mt-3 inline-block text-[#555555]">
-            I think, I build, I ship.
-          </span>
+          Turning ideas into code, and code into products.<br />
+          I think, I build, I ship.
         </p>
       </div>
     </header>
