@@ -22,6 +22,7 @@ export type MDXPostData = {
     date: string;
     icon: string;
     color: string;
+    tags?: string[];
   };
   mdxSource: MDXRemoteSerializeResult;
 };
@@ -70,7 +71,8 @@ export function HomeClient({ projects, blogs }: HomeClientProps) {
                   icon={project.frontmatter.icon}
                   iconBgColor={colors.bg}
                   iconTextColor={colors.text}
-                  stats={[project.frontmatter.date]}
+                  date={project.frontmatter.date}
+                  tags={project.frontmatter.tags}
                   isCore={isCore}
                   onClick={() => setSelectedItem({ 
                     title: project.frontmatter.title, 
@@ -103,7 +105,8 @@ export function HomeClient({ projects, blogs }: HomeClientProps) {
                 icon={blog.frontmatter.icon}
                 iconBgColor={colors.bg}
                 iconTextColor={colors.text}
-                stats={[blog.frontmatter.date]}
+                date={blog.frontmatter.date}
+                tags={blog.frontmatter.tags}
                 onClick={() => setSelectedItem({ 
                   title: blog.frontmatter.title, 
                   category: "Blog", 
@@ -142,7 +145,7 @@ export function HomeClient({ projects, blogs }: HomeClientProps) {
               }
               iconBgColor="bg-white"
               iconTextColor="text-slate-900"
-              stats={["2024-present"]}
+              date="2024-present"
               onClick={() => {}}
             />
             <ListCard
@@ -153,7 +156,7 @@ export function HomeClient({ projects, blogs }: HomeClientProps) {
               }
               iconBgColor="bg-white"
               iconTextColor="text-slate-900"
-              stats={["2018-2024"]}
+              date="2018-2024"
               onClick={() => {}}
             />
           </div>
@@ -173,7 +176,7 @@ export function HomeClient({ projects, blogs }: HomeClientProps) {
               }
               iconBgColor="bg-white"
               iconTextColor="text-slate-900"
-              stats={["2016-2018"]}
+              date="2016-2018"
               onClick={() => {}}
             />
             <ListCard
@@ -184,7 +187,7 @@ export function HomeClient({ projects, blogs }: HomeClientProps) {
               }
               iconBgColor="bg-white"
               iconTextColor="text-slate-900"
-              stats={["2012-2016"]}
+              date="2012-2016"
               onClick={() => {}}
             />
           </div>

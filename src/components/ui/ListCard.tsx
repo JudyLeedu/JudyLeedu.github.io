@@ -6,7 +6,8 @@ interface ListCardProps {
   icon: React.ReactNode;
   iconBgColor: string;
   iconTextColor: string;
-  stats: string[];
+  date?: string;
+  tags?: string[];
   onClick: () => void;
 }
 
@@ -16,7 +17,8 @@ export function ListCard({
   icon,
   iconBgColor,
   iconTextColor,
-  stats,
+  date,
+  tags = [],
   onClick,
 }: ListCardProps) {
   return (
@@ -25,20 +27,30 @@ export function ListCard({
       onClick={onClick}
     >
       <div className="flex items-start gap-4">
-        <div className={`w-12 h-12 rounded-xl flex items-center justify-center text-2xl shrink-0 border border-slate-50 ${iconBgColor} ${iconTextColor}`}>
-          {icon}
+        <div className={`w-12 h-12 rounded-xl flex items-center justify-center text-2xl shrink-0 border border-slate-50 overflow-hidden ${iconBgColor} ${iconTextColor}`}>
+          {typeof icon === "string" && (icon.startsWith("/") || icon.startsWith("http")) ? (
+            <img src={icon} alt={title} className="w-full h-full object-cover" />
+          ) : (
+            icon
+          )}
         </div>
         <div>
           <h3 className="font-medium font-sans text-slate-900 text-[15px] mb-0.5">{title}</h3>
           <p className="font-sans text-[#555555] text-[14px]">{description}</p>
-          {stats.length > 0 && (
-            <div className="flex items-center gap-2 mt-2 text-[11px] text-slate-400 font-mono tracking-tight">
-              {stats.map((stat, index) => (
-                <span key={index} className="flex items-center gap-2">
-                  <span>{stat}</span>
-                  {index < stats.length - 1 && <span>·</span>}
+          
+          {tags.length > 0 && (
+            <div className="flex flex-wrap items-center gap-2 mt-2.5">
+              {tags.map((tag, index) => (
+                <span key={index} className="px-2 py-0.5 text-[11px] text-slate-500 bg-white border border-slate-200 rounded-md whitespace-nowrap">
+                  {tag}
                 </span>
               ))}
+            </div>
+          )}
+          
+          {date && (
+            <div className="mt-2.5 text-[11.5px] text-slate-400 font-mono tracking-tight">
+              {date}
             </div>
           )}
         </div>

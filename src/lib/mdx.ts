@@ -10,6 +10,7 @@ export type MDXFrontMatter = {
   date: string;
   icon: string;
   color: string;
+  tags?: string[];
 };
 
 export type MDXPost = {
