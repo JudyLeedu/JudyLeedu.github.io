@@ -153,6 +153,7 @@ export function HomeClient({ projects, blogs }: HomeClientProps) {
               date="2024-present"
               showArrow={false}
             />
+            {/* 暂时隐藏 Tencent 经历
             <ListCard
               title="Senior Product Manager"
               description="Tencent"
@@ -164,6 +165,7 @@ export function HomeClient({ projects, blogs }: HomeClientProps) {
               date="2018-2024"
               showArrow={false}
             />
+            */}
           </div>
 
           <header className="mb-6">

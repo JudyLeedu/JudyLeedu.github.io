@@ -101,7 +101,7 @@ export function FolderGrid({ onOpenFolder, projectsCount = 0, blogsCount = 0 }: 
                   {/* 垂直时间线 */}
                   <div className="absolute left-[32px] top-[40px] bottom-[35px] w-[2px] bg-amber-300/50 rounded-full"></div>
                   
-                  {/* 节点 1：腾讯 */}
+                  {/* 节点 1：腾讯 (暂时隐藏) 
                   <div className="flex items-center gap-4 relative z-10 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 delay-100">
                     <div className="w-2.5 h-2.5 rounded-full bg-amber-400 border-2 border-[#FFF8E7] shadow-sm shrink-0 z-10"></div>
                     <div className="flex flex-col">
@@ -109,6 +109,7 @@ export function FolderGrid({ onOpenFolder, projectsCount = 0, blogsCount = 0 }: 
                       <span className="text-[11px] font-sans font-medium text-amber-900/80 leading-none mt-0.5">Tencent</span>
                     </div>
                   </div>
+                  */}
 
                   {/* 节点 2：字节跳动 */}
                   <div className="flex items-center gap-4 relative z-10 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 delay-300">
