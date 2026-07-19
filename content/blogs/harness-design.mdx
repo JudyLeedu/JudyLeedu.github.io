@@ -1,0 +1,84 @@
+---
+title: "Harness初识：不是让 AI 写更好的代码，而是让 AI 可靠地写代码"
+description: "Agent 是大模型的脚手架，Harness 是 Agent 的安全带和护栏。它不解决“AI 能不能做”的问题，它解决“AI 做了能不能信”的问题。"
+date: "2026-06-11"
+icon: "☕️"
+color: "amber"
+---
+
+最近听了团队同学的分享，以及看了 Anthropic 的博客，看完以后的总结。
+
+## Harness不是让 AI 写更好的代码，而是让 AI 可靠地写代码
+
+听起来差不多，其实方向完全不同。提升代码水平是"让马跑更快"，设计运行环境是"给马修一条跑不丢的赛道"。
+
+## 先说问题：AI Agent 跑长任务，两个老大难
+
+让 AI 自己跑一个复杂项目，听着很美好，现实很骨感。Anthropic 的工程师总结了两类高频翻车：
+
+**第一，跑着跑着就跑偏了。** 上下文窗口快满的时候，模型会"焦虑"，意识到自己快到边界了，就开始匆忙收工，活没干完就宣布搞定。他们管这叫 Context Anxiety。还有一种情况更直白：上下文塞太多东西，模型真的就丢失了前面的逻辑，后面输出的代码跟前面写的对不上。
+
+**第二，自己审自己倾向打高分。** 让 AI 评价自己刚做的设计或代码，它基本都会说"做得不错"。
+
+一个关乎"能不能跑完"，一个关乎"跑完靠不靠谱"，Harness 就是围绕这两个问题设计的。
+
+## Harness 是什么
+
+Harness 翻译过来是"索具"，套在马身上的绳子、鞍具和缰绳。AI 的语境下，更贴切的理解是**安全带+护栏**。
+
+> 这里要跟另一个概念区分开：**Agent 是大模型的脚手架**。Agent 给了模型工具、上下文和行动能力，让模型从"只会说话"变成"能干活"。这是能力的扩展。
+> 
+> **Harness 则是给 Agent 修一条跑不丢的赛道。** 模型能力强不强，是模型自己的事。但能力再强，如果没有约束和校验，它也会跑偏、自嗨、方向迷失。Harness 不提升 AI 的智商，而是让 AI 的智商不被浪费在走弯路上。
+
+## 拆任务：别一口气干完，分着来
+
+长任务直接丢给 Agent，它大概率会迷失。Harness 的做法是先把大任务拆成小任务，one by one。
+
+之前他们的方案是用一个 Initializer Agent 把需求拆成 Feature List，然后 Coding Agent 一次只做一个 Feature。做完一个再做下一个。这跟人干活一个道理,你不会一边写前端一边搭数据库，你是一件一件来。
+
+但拆任务会引入一个新问题：每个小任务之间怎么衔接？上下文在切换的时候怎么不丢信息？这就涉及到一个关键设计决策。Context Reset vs Compaction：清空重来还是压缩续写？
+
+| 策略 | 做法 | 优点 | 缺点 |
+| --- | --- | --- | --- |
+| **Compaction** | 就地压缩，同一 Agent 继续 | 连续性强 | Context Anxiety 仍存在 |
+| **Context Reset** | 清空重启，带交接文档 | 干净清爽，焦虑消失 | 交接文档质量决定成败 |
+
+Anthropic 的实验结论：对 Sonnet 4.5 这种 Context Anxiety 比较严重的模型，Compaction 不够用，必须 Reset。换到 Opus 4.5 之后，焦虑问题减轻了很多，就不需要 Reset 了，用 Compaction 就能撑住。
+
+这个发现很实用：**选 Reset 还是 Compaction，取决于你用的模型"焦虑程度"有多高。** 本质上，这就是 Harness 在做的一件事,根据模型的特性，设计合适的上下文管理策略，让 Agent 在长任务中不丢信息、不提前收工。
+
+## 分角色：Generator + Evaluator，GAN 思路搬过来
+
+解决"自己审自己"的问题，Anthropic 借鉴了 GAN 的思路,生成器和判别器分开。
+
+**Generator** 负责干活，**Evaluator** 负责挑毛病。Evaluator 用 Playwright 工具真的去点击、操作页面，不是看截图打分，是像用户一样上手用，然后给出详细的问题列表。
+
+光分开还不够。Evaluator 本身也是 LLM，天然倾向给 LLM 的输出打高分。所以需要**调教 Evaluator，**用 few-shot 示例校准它的评分标准，让它变得"挑剔"而不是"客气"。调教一个独立的 Evaluator 比让 Generator 变得自我批判要容易得多。
+
+## Sprint Contract：写代码之前先谈好什么叫"做完"
+
+在Agent 架构（Planner → Generator → Evaluator）里，有一个设计叫做**Sprint Contract**。
+
+每个 Sprint 开始前，Generator 和 Evaluator 先"谈判"：这个 Sprint 要做什么、做完的标准是什么、怎么验证。两边达成一致后，Generator 才开始写代码。
+
+这跟 DoD（Definition of Done）是一个逻辑——验收标准前置。但在 AI Agent 场景下更有意思的是，这个 DoD 不是人定的，是两个 Agent 自己协商出来的。Evaluator 会在 Generator 的提案里挑毛病："你这个验收标准太模糊了，能不能具体到用户点了这个按钮之后应该看到什么？" 然后两方来回迭代，直到标准够具体、可测试。
+
+这解决的其实是一个信任问题：**没有明确的完成标准，Agent 就会自己给自己打勾。** Sprint Contract 就是不让 Agent 自己给自己打勾。
+
+## 最后再总结下，Harness 到底是什么？
+
+**Agent 是大模型的脚手架，Harness 是 Agent 的安全带和护栏。** 脚手架让模型从"会说"变成"会做"，安全带和护栏让 Agent 从"会做"变成"做得靠谱"。
+
+Harness 搭的不是某个具体功能，而是三样东西：
+
+1. **上下文的护栏：**长任务里 Agent 不会迷路、不会焦虑收工。拆任务、交接文档、Context Reset，都是为了让 Agent 在长时间运行中保持方向感。
+2. **质量的校验机制：**干活的和检查的不是同一拨人，检查的人还被专门调教得更挑剔。这跟开发+QA 流程一模一样，不是因为 QA 比开发聪明，而是位置不同，看到的东西就不同。
+3. **标准的锚点：**动手之前先定好什么叫"做完"，而不是做完再争论够不够好。Sprint Contract 就是不让 Agent 自己给自己打勾。
+
+> 说到底，**Harness 是一套让 AI 可靠运行的系统设计。** 它不解决"AI 能不能做"的问题，它解决"AI 做了能不能信"的问题。
+
+这套系统不会因为模型变强就变得不重要。模型强了，有些护栏可以拆掉，但新的能力边界又会催生新的护栏需求。就像高速公路的护栏——车越快，护栏不是越不重要，而是越关键。
+
+## 附：
+
+- [Harness design for long-running application development - Anthropic Engineering](https://www.anthropic.com/engineering/harness-design-long-running-apps)
