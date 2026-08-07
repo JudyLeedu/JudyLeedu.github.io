@@ -1,0 +1,152 @@
+---
+title: "与 Claude Fable 一起工作：先找到自己的"未知""
+description: "解读 Anthropic 关于 Claude Fable 的文章，地图 ≠ 领地，未知分四类，发现未知是循环"
+date: "2026-08-01"
+icon: "📄"
+color: "blue"
+---
+
+> 原文来源：Anthropic [《A field guide to Claude Fable 5: Finding your unknowns》](https://claude.com/blog/a-field-guide-to-claude-fable-finding-your-unknowns)，作者 Thariq Shihipar；本篇为按嘟小白风格做的中文图文解读。
+
+## 主要判断
+
+- **瓶颈变了**：Fable 一代模型的产出质量，取决于你能否说清"未知"，而不是能不能写代码。
+- **地图 ≠ 领地**：你给模型的 prompt 是地图，真实代码库和世界是领地；两者之间的差就是"未知"。
+- **未知分四类**：已知的已知、已知的未知、未知的已知、未知的未知——最难处理的是最后一类。
+- **发现未知是循环**：开工前、实施中、收尾后都要主动逼出未知，越早发现越便宜。
+- **让 Claude 帮你**：Claude 熟悉代码、熟悉领域、失败便宜，是发现"未知"的最好工具。
+
+---
+
+## 一、核心隐喻：地图与领地
+
+<img src="/images/claude-fable/unknowns-map-territory.jpg" alt="地图与领地" className="w-full rounded-xl border border-slate-200/60 shadow-sm my-8" />
+
+作者把与 Claude Code 协作的过程，比作**地图（Map）与领地（Territory）**：
+
+- **地图**：你交给 Claude 的 prompt、skills、context——一份被你整理成规则线条的"事情该怎么做"。
+- **领地**：真实的代码库、真实的世界、以及那些你没提到的约束条件——参差、混乱、常常有你没预期到的岔路。
+
+两者之间的差距，就是文章反复使用的关键词——**"未知（unknowns）"**。
+
+当 Claude 撞上一个未知，它只能凭"对你想要什么的最佳猜测"做决定；工作量越大、未知越多，猜错的概率就越大。
+
+> **Fable 是第一个让作者感到"产出质量的瓶颈是我说清未知的能力"的模型**。这句话是全篇立论的起点：模型能力已经强到，卡住你的不是它会不会写，而是**你有没有把要它做的事讲清楚**。
+
+---
+
+## 二、未知的四种形态
+
+<img src="/images/claude-fable/unknowns-four-types.jpg" alt="未知的四种形态" className="w-full rounded-xl border border-slate-200/60 shadow-sm my-8" />
+
+作者把面对一个新问题时的自我认知，拆成一个 2×2 的象限：
+
+| 象限 | 中文名 | 含义 | 典型来源 |
+|------|--------|------|----------|
+| ✅ Known Knowns | 已知的已知 | 你能写进 prompt 的部分 | 你确定要 Claude 做的事 |
+| ❓ Known Unknowns | 已知的未知 | 你知道自己不懂，但知道"这里有个问题" | 需要查资料、和人对齐的地方 |
+| 💡 Unknown Knowns | 未知的已知 | 说不出，但见到就认得——"我看到就知道对不对" | 视觉审美、代码风格、体验感 |
+| 🌫️ Unknown Unknowns | 未知的未知 | 完全没想过、根本不知道自己不知道 | 陌生领域、别人踩过的坑 |
+
+作者的观察：**最强的 agentic coder 未知很少**——他们对代码库和模型行为都非常熟，能一次性把 prompt 写到位。**但他们也会"预设自己有未知"**——把"提前发现和规划未知"当成一项可以练的技能。
+
+对绝大多数人（包括产品经理）来说，一开始的功课不是把 prompt 写更长，而是先分清楚：**这次任务里，我处在哪个象限？** 用错方法（例如对"未知的未知"直接开写）几乎必然返工。
+
+---
+
+## 三、开工前：怎么把未知先逼出来
+
+<img src="/images/claude-fable/unknowns-pre-implementation.jpg" alt="开工前的打法" className="w-full rounded-xl border border-slate-200/60 shadow-sm my-8" />
+
+作者给出的 Pre-implementation 打法，是让 Claude 陪你做四件事：
+
+### 1. Blind Spot Pass（盲区扫描）
+
+- 场景：进入不熟悉的代码模块、或需要 Claude 帮你搞不熟悉的领域（比如调色）。
+- 方法：直接告诉 Claude "帮我做一次 blind spot pass，找出我可能有的 unknown unknowns"。
+- 关键：给 Claude 交代你**当前处在思考的哪一步、对该问题有多少经验**——它才知道从哪里开始铺垫。
+
+### 2. Brainstorms & Prototypes（头脑风暴与原型）
+
+<img src="/images/claude-fable/unknowns-brainstorm.jpg" alt="头脑风暴与原型" className="w-full rounded-xl border border-slate-200/60 shadow-sm my-8" />
+
+- 场景：属于"未知的已知"——你说不清要什么，但见到就认得（视觉、体验、结构）。
+- 方法：让 Claude 一次给你**多个截然不同的方向**（例如 4 版差异极大的 dashboard HTML mock），你只需要"react to it"。
+- 底层逻辑：**在实施前发现方向偏差，比在实施中回滚便宜得多**。
+
+### 3. Interviews（让 Claude 反问你）
+
+- 场景：Brainstorm 之后仍留有含糊。
+- 方法：`"一次问我一个问题，优先问那些'我怎么回答会改变整体架构'的问题。"`
+- 好处：把决策颗粒度压到最小、按重要性排序、避免在细节上先烧脑。
+
+### 4. References（引用真实源码作为参照）
+
+- 场景：你有一个"我要的就是这个感觉"的库/组件，但描述不清。
+- 方法：直接把那段真实源码路径给 Fable，让它"读完后按同样语义在我们的技术栈里重写"。
+- 洞察：**源代码是最高保真度的 reference**，比截图、文档、示意图都更精确。
+
+### 5. Implementation Plan（实施计划）
+
+- 请 Claude 把"最可能被你反悔的部分"（数据模型、类型接口、UX 流）放在计划最前面，机械性重构放最后。
+- 目的：**把 review 的注意力，集中到真正会决定成败的 5% 决策上**。
+
+---
+
+## 四、实施中：用 implementation-notes.md 记录偏离
+
+<img src="/images/claude-fable/unknowns-implementation-notes.jpg" alt="实施中记录偏离" className="w-full rounded-xl border border-slate-200/60 shadow-sm my-8" />
+
+作者的经验：**再周密的计划，也一定会在实施中撞见新的未知**。
+
+于是他给出的机制非常朴素——让 Claude Code 在实施过程中维护一个临时文件 `implementation-notes.md`：
+
+> "Keep an implementation-notes.md file. If you hit an edge case that forces you to deviate from the plan, pick the conservative option, log it under 'Deviations', and keep going."
+
+这个做法把 agent 变成"边施工边写变更日志"的合作者：**下一次你再启新的 session，可以把这份 notes 一并交给 Claude，让它从上次撞过的坑继续，而不是从零开始猜**。
+
+---
+
+## 五、收尾后：Pitch 与 Quiz
+
+作者把"实施完"之后的两件事，看得和实施本身一样重要：
+
+### 1. Pitches & Explainers（给别人讲清楚）
+
+- 让 Claude 把 prototype、spec、implementation notes 打包成**一份可以直接贴到 Slack / 飞书里推进 buy-in 的文档**。
+- 用途：**帮 reviewer 从和你一样的未知起点，快速追上你已经想通的部分**——这直接决定了这次改动能不能被批准。
+
+### 2. Quizzes（回头考自己）
+
+- 读 diff 只能看到"改了什么"，看不到"为什么这么改、和已有代码怎么衔接"。
+- 让 Claude 出一份带小测验的 HTML report，答对了才 merge。
+- 底层逻辑：**如果你答不出来，说明你没真的理解，就不该合入主干**。
+
+---
+
+## Take away
+
+**上手三步：**
+
+- **开工前先做象限自检**：这次任务里，我处在四类未知的哪一类？如果是"未知的未知"，先做 blind spot pass，不要先写 prompt。
+- **说不清就先做几版原型**：审美类、体验类、结构类需求，直接让 Claude 出 3-4 版对比版本，比反复描述便宜。
+- **让 Claude 反问你**：一次问一个"回答会改变架构"的问题——把架构级决策放在最前面。
+
+**过程规约：**
+
+- 用 `implementation-notes.md` 记录所有偏离——不要在 agent context 里累积。
+- 开新 session 时把 notes、spec、prototype 一起塞回去——让 Claude 从上一次的坑继续。
+- 合入前让 Claude 出一份小测验，**答不出来就不 merge**。
+
+**常见坑：**
+
+- Prompt 太具体：Claude 会照做，即使更好的路径是改方向。
+- Prompt 太宽泛：Claude 会按"行业最佳实践"猜，而这些实践未必贴合你的场景。
+- 只做规划不迭代：Fable 一代的输出质量，恰恰是"边走边发现未知"跑出来的，一次性 prompt 打天下的时代过去了。
+
+---
+
+## 参考来源
+
+- Anthropic Blog · [A field guide to Claude Fable 5: Finding your unknowns](https://claude.com/blog/a-field-guide-to-claude-fable-finding-your-unknowns)（作者：Thariq Shihipar，2026-07-06）
+- 配套阅读 · [The new rules of context engineering for Claude 5-generation models](https://claude.com/blog/the-new-rules-of-context-engineering-for-claude-5-generation-models)
